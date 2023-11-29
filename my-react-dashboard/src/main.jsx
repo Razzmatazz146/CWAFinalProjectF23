@@ -16,6 +16,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Route path='/local' element={<LocalLibrary />} />
       <Route path='/spotify' element={<SpotifyLibrary />} />
     </Routes>
-    <App />
   </BrowserRouter>,
 )
