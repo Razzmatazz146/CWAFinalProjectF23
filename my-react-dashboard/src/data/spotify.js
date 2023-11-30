@@ -14,3 +14,25 @@ async function getToken() {
 
     return body.access_token;
 }
+
+let keyword = "joji";
+const resultData = await search(keyword, token);
+
+async function search(keyword, token) {
+    try {
+        const url = "https://api.spotify.com/v1/search";
+        const params = new URLSearchParams({ q: keyword, type: "track", limit: 1 });
+
+        const options = {
+            method: "GET",
+            headers: { "Authorization": "Bearer " + token }
+        };
+
+        const response = await fetch(`${url}?${params}`, options);
+        const data = await response.json();
+        console.log("Search data:", JSON.stringify(data, null, 2));
+        return data;
+    } catch (error) {
+        console.error("Error in search: ", error);
+    }
+}
