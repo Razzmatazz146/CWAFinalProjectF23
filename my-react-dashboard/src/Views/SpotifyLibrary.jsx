@@ -1,16 +1,21 @@
 import React from 'react'
 import AudioPlayer from 'react-h5-audio-player'
 import 'react-h5-audio-player/lib/styles.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function SpotifyLibrary() {
+
+  const lmao = () => toast("lmao");
+
   return (
-    <div>
+    <div className='mt-1 bg-gradient' style={{backgroundColor:"#10de47"}}>
       <h1>Spotify</h1>
       <br />
       <div className="container">
-        <div className="row">
+        <div className="row py-2">
           <div className="col">
-            <div className="card">
+            <div className="card bg-success bg-gradient">
               <h5>SLOW DANCING IN THE DARK</h5>
               <h5>Joji</h5>
               <AudioPlayer 
@@ -19,7 +24,7 @@ function SpotifyLibrary() {
             </div>
           </div>
           <div className="col">
-            <div className="card">
+            <div className="card bg-success bg-gradient">
             <h5>Demons</h5>
               <h5>Joji</h5>
               <AudioPlayer 
@@ -28,9 +33,9 @@ function SpotifyLibrary() {
             </div>
           </div>
         </div>
-        <div className="row">
+        <div className="row py-2">
           <div className="col">
-            <div className="card">
+            <div className="card bg-success bg-gradient">
               <h5>Glimpse of Us</h5>
               <h5>Joji</h5>
             <AudioPlayer 
@@ -39,18 +44,19 @@ function SpotifyLibrary() {
             </div>
           </div>
           <div className="col">
-            <div className="card">
+            <div className="card bg-success bg-gradient">
             <h5>Sanctuary</h5>
               <h5>Joji</h5>
             <AudioPlayer 
               autoPlay={false}
-              src="https://p.scdn.co/mp3-preview/b3c2037a7cd4745177be546b5e91a3d1e663ce9f?cid=268afd9ec3854be8833458e463e1682c"/>
+              src="https://p.scdn.co/mp3-preview/b4c682084c3fd05538726d0a126b7e14b6e92c83?cid=268afd9ec3854be8833458e463e1682c"
+              onPlay={lmao}/>
             </div>
           </div>
         </div>
-        <div className="row">
+        <div className="row py-2">
           <div className="col">
-            <div className="card">
+            <div className="card bg-success bg-gradient">
             <h5>YEAH RIGHT</h5>
               <h5>Joji</h5>
             <AudioPlayer 
@@ -59,7 +65,7 @@ function SpotifyLibrary() {
             </div>
           </div>
           <div className="col">
-            <div className="card">
+            <div className="card bg-success bg-gradient">
             <h5>Like You Do</h5>
               <h5>Joji</h5>
             <AudioPlayer 
@@ -69,7 +75,9 @@ function SpotifyLibrary() {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
+    
 
   )
 }
