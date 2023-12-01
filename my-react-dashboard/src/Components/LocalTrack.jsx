@@ -1,6 +1,6 @@
 import React from 'react'
 
-function LocalTrack(props, {playSong}) {        
+function LocalTrack(props) {        
     const songSource = props.source;
 
     const songDetails = {

@@ -7,7 +7,7 @@ import { localTracks } from '../data/localTracks'
 function LocalLibrary() {
   const [source, setSource] = useState('');
   const [currentSong, setCurrentSong] = useState({
-    song: '',
+    name: '',
     artist: ''
   });
 
@@ -15,7 +15,7 @@ function LocalLibrary() {
     setSource(url);
     setCurrentSong(songDetails);
 
-    console.log(source, ", ", currentSong)
+    console.log(url, ", ", songDetails)
   }
 
   return (
@@ -31,11 +31,11 @@ function LocalLibrary() {
             )
           })}
         </div>
+        <a className="btn btn-secondary" href='/'>Back</a>
       </div>
-      <a className="btn btn-secondary" href='/'>Back</a>
-      <div className="container border rounded fixed-bottom">
-        <h4>Playing: <span className='fw-bold'>{currentSong.song}</span> by {currentSong.artist}</h4>
-        <AudioPlayer src={source} preload='auto'/>
+      <div className="container border rounded fixed-bottom bg-white">
+        <h4>Playing: <span className='fw-bold'>{currentSong.name}</span> by {currentSong.artist}</h4>
+        <AudioPlayer src={source} preload='none' autoPlay={false}/>
       </div>
     </div>
   )
