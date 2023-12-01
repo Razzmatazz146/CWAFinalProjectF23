@@ -1,14 +1,18 @@
 import React, { useState } from 'react'
-import AudioPlayer from 'react-h5-audio-player'
-import 'react-h5-audio-player/lib/styles.css'
 import SearchResults from '../Components/SearchResults'
+import { performSearch } from '../data/spotify';
+import MusicPlayer from '../Components/MusicPlayer';
 
 function SpotifyLibrary() {
   const [preview, setPreview] = useState('');
+  const [keyword, setKeyword] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
   const [currentSong, setCurrentSong] = useState({
-    song: '',
     album: '',
-    artist: ''
+    artist: '',
+    song: '',
+    duration: '',
+    url: ''
   });
 
   const playSong = (url, songDetails) => {
@@ -16,31 +20,38 @@ function SpotifyLibrary() {
     setCurrentSong(songDetails);
   }
 
+  const onNewSearch = (event) => {
+    setKeyword(event.target.value);
+  };
+
+  const handleSearch = async () => {
+    const results = await performSearch(keyword);
+    setSearchResults(results);
+  };
+
   return (
-    <div style={{maxHeight:'80vh', marginBottom:'8vh', maxWidth:'90vw'}}>
+    <div style={{ maxHeight: '80vh', marginBottom: '8vh', maxWidth: '90vw' }}>
       <a className="btn btn-secondary btn-border-radius-0 position-fixed top-0 start-0" href="/home">Back</a>
       <div className="container pt-2">
         <h1>Search Spotify</h1>
         <br />
-        <div class="input-group input-group-lg mb-3">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Album or Song Name"
-            aria-label="Search spotify"
-            aria-describedby="button-addon2"
-          />
-          <button class="btn btn-outline-secondary bg-success bg-gradient text-white" type="button" id="button-addon2" data-mdb-ripple-init data-mdb-ripple-color="dark">
+        <div className="input-group input-group-lg mb-3">
+          <input type="text" value={keyword} className="form-control" placeholder="Album or Song Name" onChange={onNewSearch} />
+          <button className="btn btn-outline-secondary bg-success bg-gradient text-white" type="button"
+            id="button-addon2" data-mdb-ripple-init data-mdb-ripple-color="dark" onClick={handleSearch}>
             Search
           </button>
         </div>
         <h3>Search Results</h3>
-        <SearchResults playSong={playSong} />
-        <div className="container border rounded fixed-bottom">
-          <h4>Playing: <span className='fw-bold'>{currentSong.song}</span> by {currentSong.artist}</h4>
-          <AudioPlayer autoPlay={false} src={preview} />
-        </div>
+        {searchResults.map(track => {
+          return (
+            <div key={track.id}>
+              <SearchResults song={track.song} artist={track.artist} album={track.album} duration={track.duration} playSong={playSong} previewUrl={track.previewUrl} key={track.id} />
 
+            </div>
+          )
+        })}
+        <MusicPlayer currentSong={currentSong.song} url={currentSong.url} artist={currentSong.artist} />
       </div>
     </div>
   )
