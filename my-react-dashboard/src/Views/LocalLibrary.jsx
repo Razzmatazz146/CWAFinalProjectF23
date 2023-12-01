@@ -1,17 +1,42 @@
-import React from 'react'
+import React, { useState } from 'react'
 import LocalTrack from '../Components/LocalTrack'
+import AudioPlayer from 'react-h5-audio-player'
+import 'react-h5-audio-player/lib/styles.css'
 import { localTracks } from '../data/localTracks'
 
 function LocalLibrary() {
+  const [source, setSource] = useState('');
+  const [currentSong, setCurrentSong] = useState({
+    song: '',
+    artist: ''
+  });
+
+  const playSong = (url, songDetails) => {
+    setSource(url);
+    setCurrentSong(songDetails);
+
+    console.log(source, ", ", currentSong)
+  }
+
   return (
-    <div>
+    <div className='text-center'>
       <h1>Local Music</h1>
-      {localTracks.map(track => {
-        return (
-          <LocalTrack name={track.name} artist={track.artist} duration={track.duration} source={track.source} listens={2}/>
-        )
-      })}
-      <button className="btn btn-secondary">Back</button>
+      <div className='px-2 container-fluid' style={{ "paddingBottom": "175px" }}>
+        <div className="row">
+          {localTracks.map(track => {
+            return (
+              <div className="col-6" key={track.id}>
+                <LocalTrack name={track.name} artist={track.artist} duration={track.duration} source={track.source} listens={2} playSong={playSong} />
+              </div>
+            )
+          })}
+        </div>
+      </div>
+      <a className="btn btn-secondary" href='/'>Back</a>
+      <div className="container border rounded fixed-bottom">
+        <h4>Playing: <span className='fw-bold'>{currentSong.song}</span> by {currentSong.artist}</h4>
+        <AudioPlayer src={source} preload='auto'/>
+      </div>
     </div>
   )
 }

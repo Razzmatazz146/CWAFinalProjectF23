@@ -2,36 +2,36 @@ export const localTracks = [
     {
         id: 1,
         name: "Boss Battle 6",
-        author: "nene",
+        artist: "nene",
         duration: "3:29",
-        source: "../assets/BossBattle6MetalV2.wav"
+        source: "src/assets/BossBattle6MetalV2.wav"
     },
     {
         id: 2,
         name: "Boss Battle 2",
-        author: "nene",
+        artist: "nene",
         duration: "0:39",
-        source: "../assets/boss_battle_#2_metal_opening.wav"
+        source: "src/assets/boss_battle_2.wav"
     },
     {
         id: 3,
         name: "Boss Battle 7",
-        author: "nene",
+        artist: "nene",
         duration: "0:46",
-        source: "../assets/boss_battle_07.wav"
+        source: "src/assets/boss_battle_07.wav"
     },
     {
         id: 4,
         name: "Fast Fight",
-        author: "Ville Nousiainen",
+        artist: "Ville Nousiainen",
         duration: "0:26",
-        source: "../assets/fight.wav"
+        source: "src/assets/fight.wav"
     },
     {
         id: 5,
         name: "JRPG Battle",
-        author: "HydroGene",
+        artist: "HydroGene",
         duration: "1:55",
-        source: "../assets/jrpg_battle_full.wav"
+        source: "src/assets/jrpg_battle.mp3"
     }
 ]
