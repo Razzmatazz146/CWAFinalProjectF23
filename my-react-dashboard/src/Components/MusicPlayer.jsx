@@ -6,7 +6,7 @@ function MusicPlayer(props) {
     return (
         <div className="container border rounded fixed-bottom">
             <h4>Playing: <span className='fw-bold'>{props.song}</span> by {props.artist}</h4>
-            <AudioPlayer autoPlay={false} src={props.url} />
+            <AudioPlayer autoPlay={true} src={props.url} volume={0.5} />
         </div>
     )
 }

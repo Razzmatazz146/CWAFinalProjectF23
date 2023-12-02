@@ -8,7 +8,6 @@ import spotifyLogo from '../assets/Spotify_Logo_CMYK_Black.png';
 function SpotifyLibrary() {
   const [isVisibleResults, setIsVisibleResults] = useState(false);
   const [isVisiblePlayer, setIsVisiblePlayer] = useState(false);
-  const [preview, setPreview] = useState('');
   const [keyword, setKeyword] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [currentSong, setCurrentSong] = useState({
@@ -16,12 +15,14 @@ function SpotifyLibrary() {
     artist: '',
     song: '',
     duration: '',
-    url: ''
+    url: '',
+    outUrl: ''
   });
 
-  const playSong = (url, songDetails) => {
-    setPreview(url);
+  const playSong = (songDetails) => {
     setCurrentSong(songDetails);
+    console.log(songDetails);
+    setIsVisiblePlayer(true);
   }
 
   const onNewSearch = (event) => {
@@ -62,13 +63,13 @@ function SpotifyLibrary() {
           {searchResults.map(track => {
             return (
               <div key={track.id}>
-                <SearchResults song={track.song} artist={track.artist} album={track.album} duration={track.duration} playSong={playSong} previewUrl={track.previewUrl} key={track.id} />
+                <SearchResults song={track.song} artist={track.artist} album={track.album} duration={track.duration}  url={track.url} outUrl={track.outUrl} playSong={playSong} key={track.id} />
               </div>
             )
           })}
         </div>}
         {isVisiblePlayer&& <div id='musicPlayer'>
-          <MusicPlayer currentSong={currentSong.song} url={currentSong.url} artist={currentSong.artist} />
+          <MusicPlayer song={currentSong.song} url={currentSong.url} artist={currentSong.artist} />
         </div>}
       </div>
     </div>

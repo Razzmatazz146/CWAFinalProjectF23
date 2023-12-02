@@ -37,13 +37,17 @@ async function search(keyword, token) {
             const songName = track.name;
             const durationMs = track.duration_ms;
             const previewUrl = track.preview_url;
+            const externalUrl = track.external_urls.spotify;
+            const nextUrl = track.next;
 
             tracksInfo.push({
                 album: albumName,
                 artist: artistName,
                 song: songName,
                 duration: durationMs,
-                url: previewUrl
+                url: previewUrl,
+                outUrl: externalUrl,
+                more: nextUrl
             });
         }
 
@@ -62,4 +66,9 @@ export async function performSearch(keyword) {
   const resultData = await search(keyword, token);
   console.log(resultData);
   return resultData;
+}
+
+export async function searchMore(nextUrl, token) {
+    const resultData = await search(nextUrl, token);
+    return resultData;
 }

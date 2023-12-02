@@ -1,13 +1,13 @@
 import React from 'react';
 
-function SearchResults({ song, artist, album, duration, playSong, previewUrl }) {
+function SearchResults({ song, artist, album, duration, url, playSong, outUrl  }) {
     // Calculate the formatted time from duration
     const seconds = Math.floor((duration / 1000) % 60);
     const minutes = Math.floor((duration / 1000) / 60);
     const formattedTime = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 
-    const songDetails = { song, album, artist };
-
+    const songDetails = { song, album, artist, url };
+    
     return (
         <div className='row border rounded align-items-center text-muted p-1 my-2 mx-4'>
             <div className='col-4 text-dark fw-bold'>{song}</div>
@@ -16,8 +16,8 @@ function SearchResults({ song, artist, album, duration, playSong, previewUrl }) 
                 <div>{album}</div>
             </div>
             <div className="col">{formattedTime}</div>
-            <div className="col btn btn-warning p-1 m-1" onClick={() => playSong(previewUrl, songDetails)}>Preview</div>
-            <div className="col btn btn-success p-1 m-1">Spotify</div>
+            <div className="col btn btn-warning p-1 m-1" onClick={() => playSong(songDetails)}>Preview</div>
+            <a className="col btn btn-success p-1 m-1" href={outUrl} target="_blank">Open on Spotify</a>
         </div>
     );
 }
