@@ -1,12 +1,12 @@
 import React from 'react';
 
 function SearchResults({ song, artist, album, duration, url, playSong, outUrl  }) {
-    // Calculate the formatted time from duration
-    const seconds = Math.floor((duration / 1000) % 60);
-    const minutes = Math.floor((duration / 1000) / 60);
-    const formattedTime = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 
-    const songDetails = { song, album, artist, url };
+    const seconds = Math.floor((duration / 1000) % 60)
+    const minutes = Math.floor((duration / 1000) / 60)
+    const formattedTime = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
+
+    const songDetails = { song, album, artist, url }
     
     return (
         <div className='row border rounded align-items-center text-muted p-1 my-2 mx-4'>
@@ -22,4 +22,4 @@ function SearchResults({ song, artist, album, duration, url, playSong, outUrl  }
     );
 }
 
-export default SearchResults;
+export default SearchResults
