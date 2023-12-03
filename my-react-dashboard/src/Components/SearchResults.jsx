@@ -9,7 +9,7 @@ function SearchResults({ song, artist, album, duration, url, playSong, outUrl  }
     const songDetails = { song, album, artist, url }
     
     return (
-        <div className='row border rounded align-items-center text-muted p-1 my-2 mx-4'>
+        <div className='row border rounded align-items-center text-muted p-1 my-2 mx-4 bg-light bg-gradient'>
             <div className='col-4 text-dark fw-bold'>{song}</div>
             <div className="col">
                 <div>{artist}</div>

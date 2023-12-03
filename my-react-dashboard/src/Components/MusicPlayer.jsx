@@ -4,9 +4,12 @@ import 'react-h5-audio-player/lib/styles.css';
 
 function MusicPlayer(props) {
     return (
-        <div className="container border rounded fixed-bottom">
-            <h4>Playing: <span className='fw-bold'>{props.song}</span> by {props.artist}</h4>
-            <AudioPlayer autoPlay={true} src={props.url} volume={0.5} />
+        <div className="container border rounded fixed-bottom bg-dark bg-gradient text-light">
+            <h4>Playing: <span className='fw-bold text-light'>{props.song}</span> by {props.artist}</h4>
+            <div className="container my-1">
+                <AudioPlayer autoPlay={true} src={props.url} volume={0.5} />
+            </div>
+            
         </div>
     )
 }
