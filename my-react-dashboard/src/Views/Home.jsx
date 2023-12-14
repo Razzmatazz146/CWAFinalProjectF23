@@ -4,7 +4,8 @@ function Home() {
   return (
     <div className="container">
       <div className="container" style={{ paddingTop: '200px' }}>
-        <h1>THE BOYS</h1>
+        <img src="src/assets/the_boys_logo.png" alt="" style={{height: '200px'}}/>
+        <p>Featuring the best music that $0.00 could buy!</p>
         <h3>Choose the library you would like to access:</h3>
         <br />
         <div className="row">
