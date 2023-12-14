@@ -16,7 +16,11 @@ function SearchResults({ song, artist, album, duration, url, playSong, outUrl  }
                 <div>{album}</div>
             </div>
             <div className="col">{formattedTime}</div>
-            <div className="col btn btn-warning p-1 m-1" onClick={() => playSong(songDetails)}>Preview</div>
+                {songDetails.url ? (
+                    <div className="col btn btn-warning p-1 m-1" onClick={() => playSong(songDetails)}>Preview</div>
+                ) : (
+                    <div className="col btn btn-secondary p-1 m-1" disabled>No preview</div>
+                )}
             <a className="col btn btn-success p-1 m-1" href={outUrl} target="_blank">Open on Spotify</a>
         </div>
     );
