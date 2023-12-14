@@ -13,9 +13,6 @@ async function getToken() {
     return body.access_token
 }
 
-
-
-
 async function search(keyword, token, isNextUrl = false) {
 
     let url;
@@ -62,14 +59,14 @@ async function search(keyword, token, isNextUrl = false) {
 
 }
 
-
+// For first search
 export async function performSearch(keyword) {
     const token = await getToken()
     const resultData = await search(keyword, token)
-    console.log(resultData)
     return resultData
 }
 
+// For searching more results
 export async function performSearchMore(nextUrl) {
     const token = await getToken()
     const resultData = await search(nextUrl, token, true)
